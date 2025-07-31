@@ -1,0 +1,408 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="background-color: gold;">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SCIDAC - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/kalender.css' %}" rel="stylesheet">
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/kalkulator.css' %}" rel="stylesheet">
+    <link href="{% static 'css/dark.css' %}" rel="stylesheet">
+
+
+
+
+</head>
+
+<body id="page-top" style="background-color: #ADD8E6;">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav style="background-color:#ADD8E6;"
+                    class=" topbar navbar navbar-expand navbar-orange   mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+
+
+
+
+                    <!-- capsule-->
+
+                    <a class="nav-link collapsed" href="/capsule">
+                        <img src="{% static 'img/capsules.png'%}" alt="capsule" style="height: 25px;">
+
+                    </a>
+
+                    <!--  tree -->
+                    <a class="nav-link collapsed" href="/capsule">
+                        <img src="{% static 'img/tree.png'%}" alt="capsule" style="height: 25px;">
+
+                    </a>
+
+                    <!-- math -->
+                    <a class="nav-link collapsed" href="/math">
+                        <img src="{% static 'img/tools.png'%}" alt="capsule" style="height: 25px;">
+
+                    </a>
+                    <h6 class="h5 mb-0 text-800" style="color: slategray;">Selamat Datang {{ user.username }} di
+                        Aplikasi Studora</h6>
+                    
+
+
+
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div style="margin-left: 600px; width: 300px;" class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-info" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                         <h5 style="height: 15px; color: white; margin-top: 25px; " class="jam" id="waktu"></h5>
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span style="color: azure;"
+                                    class="mr-2 d-none d-lg-inline  small">{{user.username}}</span>
+                                {% if user.safe_profile.profile_picture %}
+                                <img class="img-profile rounded-circle"
+                                    src="{{ user.safe_profile.profile_picture.url }}">
+                                {% else %}
+                                <img class="img-profile rounded-circle" src="{% static 'img/undraw_profile.svg' %}">
+                                {% endif %}
+
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/akun">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-light-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="/auth-setting">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid" style="background-color: #ADD8E6; margin-top: -25px;">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+
+
+
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                TO DO LIST</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> Dalam proses🙏</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Saldo</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Dalam proses🙏</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jadwal
+                                                Shalat
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Dalam
+                                                        proses🙏</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Hubungi Kami</div>
+                                            <a class="h5 mb-0 font-weight-bold text-primary-800"
+                                                style="text-decoration: none;" href="/cu-cu">click di sini</a>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+
+
+                    <div class="row" style="background-color: #ADD8E6; padding-top: 30px;">
+
+                        <!-- Pie Chart -->
+                        <div class=" col-xl-4 col-lg-5">
+                            <div style="width: 400px;" class="card shadow mb-5">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-info">Calculator</h6>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class=" grid-container ">
+                                    <div style="background-color: white; height: 360px;"
+                                        class=" card-body calculator-grid ">
+                                        <textarea style="background-color:#ffcf50; color: white; overflow: hidden; "
+                                            type="text" id="inputtext" placeholder="0">
+
+                                      </textarea>
+                                        <button style="background-color: #ADD8E6;">C</button>
+                                        <button style="background-color: #ADD8E6;">DEL</button>
+                                        <button style="background-color: #ADD8E6;"></button>
+
+                                        <button style="background-color: gray; color:white;">+</button>
+                                        <button style="background-color: #ADD8E6;">7</button>
+                                        <button style="background-color: #ADD8E6;">8</button>
+                                        <button style="background-color: #ADD8E6">9</button>
+                                        <button style="background-color: gray; color:white;">-</button>
+                                        <button style="background-color: #ADD8E6;">4</button>
+                                        <button style="background-color: #ADD8E6;">5</button>
+                                        <button style="background-color: #ADD8E6;">6</button>
+                                        <button style="background-color: gray; color:white;">*</button>
+                                        <button style="background-color: #ADD8E6;">1</button>
+                                        <button style="background-color: #ADD8E6;">2</button>
+                                        <button style="background-color: #ADD8E6;">3</button>
+                                        <button style="background-color: gray;  color:white;">/</button>
+                                        <button style="background-color: #ADD8E6;">00</button>
+                                        <button style="background-color: #ADD8E6;">0</button>
+                                        <button style="background-color: #ADD8E6;">.</button>
+                                        <button style="background-color: gray;">=</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-xl-4 col-lg-5">
+                            <div style="width: 850px;" class="card shadow mb-4" style="margin-left: 80px;">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-info">Calender</h6>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div style=" height: 360px; width: 800px; line-height: 0.5;" class=" grid-container  ">
+
+                                    <div style=" margin-top: 20px; margin-left: 50px;" id="monthYear"></div>
+                                    <div style="margin-left: -150px; font-weight: 200;" class="calendar">
+                                        <div class="header">Minggu</div>
+                                        <div class="header">Senin</div>
+                                        <div class="header">Selasa</div>
+                                        <div class="header">Rabu</div>
+                                        <div class="header">Kamis</div>
+                                        <div class="header">Jumat</div>
+                                        <div class="header">Sabtu</div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+
+            <!-- End of Footer -->
+
+        </div>
+
+        <!-- End of Content Wrapper -->
+
+    </div>
+
+
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="/">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <!--  <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script> -->
+
+    <!-- Page level custom scripts --><!-- 
+    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script> -->
+    <script src="{% static 'js/jam.js' %}"></script>
+    <script src="{% static 'js/calculator.js' %}"></script>
+    <script src="{% static 'js/kalender.js' %}"></script>
+
+
+
+</body>
+<footer class="sticky-footer " style="margin-top: 100px; background-color: #ffcf50;" ;">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>by &copy; sajakCodingan</span> &nbsp;&nbsp;&nbsp;&nbsp; <br>
+            <span>&copy; Muhammad Yahya Abdullahissalam</span>
+
+
+
+        </div>
+    </div>
+</footer>
+
+</html>

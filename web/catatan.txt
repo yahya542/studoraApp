@@ -1,0 +1,1 @@
+run android : python3 manage.py runserver 192.168.185.51:8000
